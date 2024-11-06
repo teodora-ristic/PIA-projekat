@@ -1,0 +1,113 @@
+<header>
+  <app-logout></app-logout>
+</header>
+<div class="container-fluid">
+  <div class="container-fluid">
+  <h3>Admin {{ulogovan.korisnickoIme}}</h3>
+  <hr>
+  <div class="row">
+    <div class="col-sm-3">
+      <h3>Gosti:</h3>
+      <table class="table" *ngIf="gosti.length>0; else nemaGostiju">
+        <tr>
+          <th>Korisničko ime</th>
+          <th>Ime</th>
+          <th>Prezime</th>
+          <th>Telefon</th>
+        </tr>
+        <tr *ngFor='let g of gosti'>
+          <td>{{g.korisnickoIme}}</td>
+          <td>{{g.ime}}</td>
+          <td>{{g.prezime}}</td>
+          <td>{{g.telefon}}</td>
+          <td><button (click)="azuriraj(g)">Ažuriraj</button></td>
+        </tr>
+      </table>
+      <br>
+    </div>
+    <div class="col-sm-3">
+      <h3>Konobari:</h3>
+      <table class="table" *ngIf="konobari.length>0; else nemaKonobara">
+        <tr>
+          <th>Korisničko ime</th>
+          <th>Ime</th>
+          <th>Prezime</th>
+          <th>Telefon</th>
+          <th>Restoran</th>
+        </tr>
+        <tr *ngFor='let k of konobari'>
+          <td>{{k.korisnickoIme}}</td>
+          <td>{{k.ime}}</td>
+          <td>{{k.prezime}}</td>
+          <td>{{k.telefon}}</td>
+          <td>{{k.restoran}}</td>
+          <td><button (click)="azuriraj(k)">Ažuriraj</button></td>
+        </tr>
+      </table>
+      <br>
+
+      <button (click)="dodajKonobara()">Dodaj konobara</button>
+    </div>
+    <div class="col-sm-3">
+      <h3>Restorani:</h3>
+      <table class="table" *ngIf="restorani.length>0; else nemaRestorana">
+        <tr>
+          <th>Naziv</th>
+          <th>Adresa</th>
+          <th>Tip</th>
+          <th>Telefon</th>
+          <th colspan="5">Konobari</th>
+        </tr>
+        <tr *ngFor='let r of restorani'>
+          <td>{{r.naziv}}</td>
+          <td>{{r.adresa}}</td>
+          <td>{{r.tip}}</td>
+          <td>{{r.telefon}}</td>
+          <td *ngFor='let k of r.konobari'>{{k.ime}} {{k.prezime}}</td>
+        </tr>
+      </table>
+      <br>
+
+      <button (click)="dodajRestoran()">Dodaj restoran</button>
+    </div>
+    <div class="col-sm-3">
+      <h3>Neobrađeni zahtevi:</h3>
+      <table class="table" *ngIf="zahtevi.length>0; else nemaZahteva">
+        <tr>
+          <th>Korisničko ime</th>
+          <th>Ime</th>
+          <th>Prezime</th>
+          <th>Telefon</th>
+        </tr>
+        <tr *ngFor='let z of zahtevi'>
+          <td>{{z.korisnickoIme}}</td>
+          <td>{{z.ime}}</td>
+          <td>{{z.prezime}}</td>
+          <td>{{z.telefon}}</td>
+          <td><button (click)="prihvati(z)">Prihvati</button></td>
+          <td><button (click)="odbij(z)">Odbij</button></td>
+        </tr>
+      </table>
+      <br>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer>
+  <p>&copy; 2024 Sva prava zadržana.</p>
+</footer>
+
+
+<ng-template #nemaGostiju>
+  Trenutno nema registrovanih gostiju.
+</ng-template>
+<ng-template #nemaKonobara>
+  Trenutno nema registrovanih konobara.
+</ng-template>
+<ng-template #nemaRestorana>
+  Trenutno nema restorana.
+</ng-template>
+<ng-template #nemaZahteva>
+  Trenutno nema neobrađenih zahteva.
+</ng-template>

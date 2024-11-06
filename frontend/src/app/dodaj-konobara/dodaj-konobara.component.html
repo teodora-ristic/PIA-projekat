@@ -1,0 +1,28 @@
+<div class="nazad">
+  <a class="link" routerLink="/admin"> &lt; Nazad</a>
+</div>
+
+<div class="container-fluid">
+  <div class="container-fluid">
+    <h3>Dodaj konobara</h3>
+      Korisničko ime: <input type='text' [(ngModel)]='korisnickoIme' required> <br>
+      Lozinka: <input type='password' [(ngModel)]='lozinka' required> <br>
+      Bezbedonosno pitanje: <input type='text' [(ngModel)]='pitanje' required> <br>
+      Odgovor: <input type='text' [(ngModel)]='odgovor' required> <br>
+      Ime: <input type='text' [(ngModel)]='ime' required> <br>
+      Prezime: <input type='text' [(ngModel)]='prezime' required> <br>
+      Pol: <input type="radio" name="pol" value="zenski" [(ngModel)]="pol"> Z
+      <input type="radio" name="pol" value="muski" [(ngModel)]="pol"> M <br>
+      Adresa: <input type='text' [(ngModel)]='adresa' required> <br>
+      Telefon: <input type='text' [(ngModel)]='telefon' required> <br>
+      Mejl: <input type='text' [(ngModel)]='mejl' required> <br>
+      Slika: <br> <img [src]="slika" class="space" required><br>
+      <input type="file" class="space" (input)="onFileSelected($event)" required> <br>
+      Broj kartice: <input type='text' [(ngModel)]='brKartice' required> <br>
+      Restoran: <input type='text' [(ngModel)]='restoran' required> <br>
+      <button (click)="dodaj()">Dodaj</button>
+  </div>
+</div>
+<footer>
+  <p>&copy; 2024 Sva prava zadržana.</p>
+</footer>

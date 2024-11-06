@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="container-fluid">
+    <div class="col-sm-6">
+      <h3>Aktuelne dostave:</h3>
+      <table class="table" *ngIf="aktuelne.length>0; else nemaAktuelnih">
+        <tr>
+          <th>Naziv restorana</th>
+          <th>Status</th>
+          <th>Procenjeno vreme</th>
+        </tr>
+        <tr *ngFor='let d of aktuelne'>
+          <td>{{d.naziv}}</td>
+          <td>{{d.status}}</td>
+          <td *ngIf="d.vreme_od > 0 && d.vreme_do > 0; else podesite">{{d.vreme_od}}-{{d.vreme_do}} min</td>
+
+          <td [hidden]="d.status!='neobradjena'"><select name="vremeOd" [(ngModel)]='vremeOd'>
+            <option value=20>20-30 minuta</option>
+            <option value=30>30-40 minuta</option>
+            <option value=50>50-60 minuta</option>
+          </select></td>
+          <td [hidden]="d.status!='neobradjena'"><button (click)="potvrdi(d)">Potvrdi</button></td>
+          <td [hidden]="d.status!='neobradjena'"><button (click)="odbij(d)">Odbij</button></td>
+        </tr>
+      </table>
+      <br>
+    </div>
+  </div>
+</div>
+<ng-template #nemaAktuelnih>
+  Trenutno nemate aktuelnih dostava.
+</ng-template>
+<ng-template #podesite>
+  <td class="table">Nije jos podeseno</td>
+</ng-template>

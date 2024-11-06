@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-4">
+      <h3>Aktuelne rezervacije:</h3>
+      <table class="table"  *ngIf="aktuelne.length>0; else nemaAktuelnih">
+        <tr>
+          <th>Datum</th>
+          <th>Naziv restorana</th>
+          <th>Adresa restorana</th>
+        </tr>
+        <tr *ngFor='let r of aktuelne'>
+          <td>{{r.datum_vreme | date:'dd-MM-yyyy HH:mm'}}</td>
+          <td>{{r.naziv}}</td>
+          <td>{{r.adresa}}</td>
+        </tr>
+      </table>
+      <br>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5">
+      <h3>Istekle rezervacije:</h3>
+      <table class="table" *ngIf="istekle.length>0; else nemaIsteklih">
+        <tr>
+          <th>Datum</th>
+          <th>Naziv restorana</th>
+        </tr>
+        <tr *ngFor='let r of istekle'>
+          <td>{{r.datum_vreme | date:'dd-MM-yyyy HH:mm'}}</td>
+          <td>{{r.naziv}}</td>
+        </tr>
+      </table>
+      <br>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #nemaAktuelnih>
+  Trenutno nemate aktuelnih rezervacija.
+</ng-template>
+<ng-template #nemaIsteklih>
+  Trenutno nemate isteklih rezervacija.
+</ng-template>

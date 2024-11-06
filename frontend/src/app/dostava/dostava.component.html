@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-4">
+      <h3>Aktuelne dostave:</h3>
+      <table class="table"  *ngIf="aktuelne.length>0; else nemaAktuelnih">
+        <tr>
+          <th>Naziv restorana</th>
+          <th>Status</th>
+          <th>Procenjeno vreme</th>
+        </tr>
+        <tr *ngFor='let d of aktuelne'>
+          <td>{{ d.naziv }}</td>
+          <td>{{ d.status }}</td>
+          <td *ngIf="d.vreme_od > 0 && d.vreme_do > 0; else podesite">{{ d.vreme_od }}-{{ d.vreme_do }} min</td>
+        </tr>
+      </table>
+      <br>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5">
+      <h3>Prethodne dostave:</h3>
+      <table class="table"  *ngIf="istekle.length>0; else nemaIsteklih">
+        <tr>
+          <th>Datum dostave</th>
+          <th>Iznos računa</th>
+          <th>Naziv restorana</th>
+        </tr>
+        <tr *ngFor='let d of istekle'>
+          <td>{{d.datum | date:'dd-MM-yyyy HH:mm'}}</td>
+          <td>{{d.racun}}</td>
+          <td>{{d.naziv}}</td>
+        </tr>
+      </table>
+      <br>
+    </div>
+  </div>
+</div>
+
+
+
+
+<ng-template #nemaAktuelnih>
+  Trenutno nemate aktuelnih dostava.
+</ng-template>
+<ng-template #nemaIsteklih>
+  Trenutno nemate isteklih dostava.
+</ng-template>
+<ng-template #podesite>
+  <td class="table">Nije jos podeseno</td>
+</ng-template>

@@ -1,0 +1,21 @@
+<div class="nazad">
+  <a class="link" routerLink="">&lt; Nazad</a>
+</div>
+
+<div class="container-fluid">
+  <div class="container-fluid">
+    <h3>Ulogujte se</h3>
+    <br>
+    Korisničko ime: <input type="text" [(ngModel)]="korisnickoIme"> <br />
+    Lozinka: <input type="password" [(ngModel)]="lozinka"> <br /> <br>
+    <button (click)="login()">Login</button>
+    <br />
+    <p class="error">{{greska}}</p>
+    <hr>
+    Nemate nalog?
+    <a routerLink="/registracija">Registracija</a>
+  </div>
+</div>
+<footer>
+  <p>&copy; 2024 Sva prava zadržana.</p>
+</footer>

@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <div class="container-fluid">
+    <div class="col-sm-2">
+      <h3>Vaša korpa:</h3>
+      <table  class="table" *ngIf="ulogovan.korpa.length>0; else nemaJela">
+        <tr>
+          <th>Naziv</th>
+          <th>Cena</th>
+        </tr>
+        <tr *ngFor='let j of ulogovan.korpa'>
+          <td>{{j.naziv}}</td>
+          <td>{{j.cena}}</td>
+        </tr>
+      </table>
+      <br>
+      <button *ngIf="ulogovan.korpa.length>0;" (click)="zavrsiPorudzbinu()">Završi porudzbinu</button>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #nemaJela>
+  Vaša korpa je trenutno prazna.
+</ng-template>

@@ -1,0 +1,94 @@
+<div class="dobrodosli">
+  <span>Dobrodošli!</span>
+</div>
+
+<div class="container-fluid">
+  <div class="container-fluid">
+    <h4>Trenutno pristupate kao neregistrovani korisnik</h4>
+    <a routerLink="/login">Želite da se ulogujete?</a>
+    <hr>
+  </div>
+
+  <div class="container-fluid">
+    <h3>Zaboravili ste lozinku?</h3>
+    Korisničko ime: <input type="text" [(ngModel)]="korisnickoIme"> <br />
+    Stara lozinka: <input type="password" [(ngModel)]="stara"> <br />
+    Nova lozinka: <input type="password" [(ngModel)]="nova"> <br />
+    Ponovljena nova lozinka: <input type="password" [(ngModel)]="nova2"> <br /> <br>
+    <button (click)="promeniLozinku()">Promena lozinke</button>
+    <hr>
+  </div>
+
+  <div class="container-fluid">
+    <h3>Osnovne informacije</h3>
+    Broj restorana: {{brRestorana}} <br>
+    Broj registrovanih gostiju: {{brGostiju}} <br>
+    Broj rezervacija u poslednjih sedam dana: {{brSedamDana}} <br>
+    Broj rezervacija u poslednjih 24h: {{brDan}} <br>
+    Broj rezervacija u poslednjih mesec dana: {{brMesec}} <br>
+    <hr>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>Restorani u ponudi:</h3>
+        <table class="table">
+          <tr>
+            <th>Naziv</th>
+            <th>Adresa</th>
+            <th>Tip</th>
+            <th colspan="5">Konobari</th>
+          </tr>
+          <tr *ngFor='let r of restorani'>
+            <td>{{r.naziv}}</td>
+            <td>{{r.adresa}}</td>
+            <td>{{r.tip}}</td>
+            <td *ngFor='let k of r.konobari'>{{k.ime}} {{k.prezime}}</td>
+          </tr>
+        </table>
+        <br>
+        <div class="button-group">
+          <button (click)="sortirajPoNazivuAsc()">Sortiraj po nazivu rastuce </button>
+          <button (click)="sortirajPoNazivuDesc()">Sortiraj po nazivu opadajuce </button> <br> <br>
+          <button (click)="sortirajPoAdresiAsc()">Sortiraj po adresi rastuce </button>
+          <button (click)="sortirajPoAdresiDesc()">Sortiraj po adresi opadajuce </button> <br> <br>
+          <button (click)="sortirajPoTipuAsc()">Sortiraj po tipu rastuce </button>
+          <button (click)="sortirajPoTipuDesc()">Sortiraj po tipu opadajuce </button>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <h3>Pretraga restorana po kriterijumu:</h3>
+        Naziv: <input type="text" [(ngModel)]="naziv"> <br />
+        Adresa: <input type="text" [(ngModel)]="adresa"> <br />
+        Tip: <input type="text" [(ngModel)]="tip"> <br /> <br>
+        <button (click)="pretraga()">Pretrazi </button> <br>
+      </div>
+
+      <div class="col-sm-4">
+        <h3>Rezultati pretrage:</h3>
+        <table class="table" *ngIf="restoraniP.length > 0; else nemaRestorana">
+          <tr>
+            <th>Naziv</th>
+            <th>Adresa</th>
+            <th>Tip</th>
+          </tr>
+          <tr *ngFor='let r of restoraniP'>
+            <td>{{r.naziv}}</td>
+            <td>{{r.adresa}}</td>
+            <td>{{r.tip}}</td>
+          </tr>
+        </table>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>&copy; 2024 Sva prava zadržana.</p>
+</footer>
+
+<ng-template #nemaRestorana>
+  Nema restorana koji odgovaraju pretrazi.
+</ng-template>

@@ -1,0 +1,28 @@
+<div class="nazad">
+  <a class="link" routerLink="/admin">&lt; Nazad</a>
+</div>
+<div class="container-fluid">
+  <div class="container-fluid">
+    <h3>Dodaj restoran</h3>
+    Naziv: <input type='text' [(ngModel)]='naziv' required> <br>
+    Tip: <input type='text' [(ngModel)]='tip' required> <br>
+    Adresa: <input type='text' [(ngModel)]='adresa' required> <br>
+    Opis: <input type='textarea' [(ngModel)]='opis' required> <br>
+    Kontakt: <input type='text' [(ngModel)]='kontakt' required> <br>
+    Radno vreme: <br>
+    Ponedeljak: <input type='number' [(ngModel)]='ponOd' required> <input type='number' [(ngModel)]='ponDo' required><br>
+    Utorak: <input type='number' [(ngModel)]='utoOd' required> <input type='number' [(ngModel)]='utoDo' required><br>
+    Sreda: <input type='number' [(ngModel)]='sreOd' required> <input type='number' [(ngModel)]='sreDo' required><br>
+    Četvrtak: <input type='number' [(ngModel)]='cetOd' required> <input type='number' [(ngModel)]='cetDo' required><br>
+    Petak: <input type='number' [(ngModel)]='petOd' required> <input type='number' [(ngModel)]='petDo' required> <br>
+    Subota: <input type='number' [(ngModel)]='subOd' required> <input type='number' [(ngModel)]='subDo' required><br>
+    Nedelja: <input type='number' [(ngModel)]='nedOd' required> <input type='number' [(ngModel)]='nedDo' required><br>
+    <input type="file" id="fileInput"><br>
+    <button (click)="handleFile()">Učitaj JSON fajl</button><br>
+    <canvas id="myCanvas"></canvas><br>
+    <button (click)="dodaj()">Dodaj</button>
+  </div>
+</div>
+<footer>
+  <p>&copy; 2024 Sva prava zadržana.</p>
+</footer>

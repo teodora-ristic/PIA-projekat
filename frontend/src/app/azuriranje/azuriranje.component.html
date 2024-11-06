@@ -1,0 +1,27 @@
+<div class="nazad">
+  <a class="link" routerLink="/admin"> &lt; Nazad</a>
+</div>
+<div class="container-fluid">
+  <div class="container-fluid">
+    <h3>Izmenite podatke: </h3>
+    Korisničko ime: <input type="text" [(ngModel)]="korisnickoIme"> <br />
+    Ime: <input type="text" [(ngModel)]="ime"> <br />
+    Prezime: <input type="text" [(ngModel)]="prezime"> <br />
+    Pol: <input type="text" [(ngModel)]="pol"> <br />
+    Adresa: <input type="text" [(ngModel)]="adresa"> <br />
+    Mejl: <input type="text" [(ngModel)]="mejl"> <br />
+    Kontakt telefon: <input type="text" [(ngModel)]="telefon"> <br />
+    Broj kreditne kartice: <input type="text" [(ngModel)]="brKartice"> <br />
+    Restoran: <input type="text" [(ngModel)]="restoran"> <br />
+    <button (click)="azurirajSve()">Ažuriraj</button> <br>
+    Promeni sliku: <br> <img [src]="slika" class="space" required><br>
+    <input type="file" class="space" (input)="onFileSelected($event)" required> <br>
+    <button (click)="azurirajSliku()">Ažuriraj sliku</button>
+  </div>
+</div>
+<footer>
+  <p>&copy; 2024 Sva prava zadržana.</p>
+</footer>
+
+
+

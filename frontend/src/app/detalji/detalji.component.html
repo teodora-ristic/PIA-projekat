@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="col-sm-6">
+    <div class="container-fluid">
+      <h3>Restoran {{birani.naziv}}</h3>
+      Adresa: {{birani.adresa}} <br>
+      Tip: {{birani.tip}} <br>
+      Kontakt telefon: {{birani.telefon}} <br>
+      <hr>
+    </div>
+    <div class="container-fluid">
+      <h3>Napravite rezervaciju stola:</h3>
+      Datum i vreme: <input type="datetime-local" [(ngModel)]="datum_vreme" required> <br>
+      Broj osoba: <input type="number" [(ngModel)]="broj" min="1" required> <br>
+      Dodatni zahtevi: <br>
+      <textarea [(ngModel)]="zahtevi"></textarea> <br>
+      <button (click)="rezervacija()">Rezervacija </button> <br>
+      <hr>
+    </div>
+    <div class="container-fluid">
+      <h3>Jelovnik:</h3>
+      <table class="table" >
+        <tr>
+          <th>Slika</th>
+          <th>Naziv</th>
+          <th>Cena</th>
+          <th colspan="3">Sastojci</th>
+        </tr>
+        <tr *ngFor='let j of birani.jelovnik'>
+          <td><img src={{j.slika}} class="pic"></td>
+          <td>{{j.naziv}}</td>
+          <td>{{j.cena}}</td>
+          <td *ngFor='let s of j.sastojci'>{{s}}</td>
+          <td><input type="number" [(ngModel)]="j.kolicina"></td>
+          <td><button (click)="dodaj(j)">Dodaj u korpu</button></td>
+        </tr>
+      </table>
+      <br>
+      <a routerLink="/korpa" (click)="pregledKorpe()">Pregled korpe</a>
+    </div>
+  </div>
+</div>
+

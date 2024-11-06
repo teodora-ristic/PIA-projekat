@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4" >
+        <h3>Podaci o korisniku: </h3>
+        <img src={{ulogovan.slika}} class="slika"> <br>
+        Ime: {{ulogovan.ime}} <br>
+        Prezime: {{ulogovan.prezime}} <br>
+        Adresa: {{ulogovan.adresa}} <br>
+        Mejl: {{ulogovan.mejl}} <br>
+        Kontakt telefon: {{ulogovan.telefon}} <br>
+        Broj kreditne kartice: {{ulogovan.brKartice}} <br>
+      </div>
+      <div class="col-sm-1"></div>
+      <div  class="col-sm-5">
+        <h3>Izmenite podatke: </h3>
+        Ime: <input type="text" [(ngModel)]="ime"> <br />
+        Prezime: <input type="text" [(ngModel)]="prezime"> <br />
+        Adresa: <input type="text" [(ngModel)]="adresa"> <br />
+        Mejl: <input type="text" [(ngModel)]="mejl"> <br />
+        Kontakt telefon: <input type="text" [(ngModel)]="telefon"> <br />
+        Broj kreditne kartice: <input type="text" [(ngModel)]="brKartice"> <br /><br>
+        <button (click)="azuriraj()">Ažuriraj</button> <br> <br>
+        Promeni sliku: <br> <img [src]="slika" class="slika" required><br>
+        <input type="file" class="space" (input)="onFileSelected($event)" required> <br> <br>
+        <button (click)="azurirajSliku()">Ažuriraj sliku</button>
+      </div>
+
+    </div>
+
+  </div>
+

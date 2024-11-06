@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="container-fluid">
+        <div class="col-sm-6">
+          <h3>Restorani:</h3>
+          <table class="table">
+            <tr>
+              <th>Naziv</th>
+              <th>Adresa</th>
+              <th>Tip</th>
+              <th>Konobari</th>
+            </tr>
+            <tr *ngFor='let r of restorani'>
+              <td><a routerLink="../detalji" (click)="vidiDetalje(r)">{{r.naziv}}</a></td>
+              <td>{{r.adresa}}</td>
+              <td>{{r.tip}}</td>
+              <td *ngFor='let k of r.konobari'>{{k.ime}} {{k.prezime}}</td>
+            </tr>
+          </table>
+          <br>
+          <h3>Pretraga:</h3>
+          Naziv: <input type="text" [(ngModel)]="naziv"> <br />
+          Adresa: <input type="text" [(ngModel)]="adresa"> <br />
+          Tip: <input type="text" [(ngModel)]="tip"> <br /><br>
+          <button (click)="pretraga()">Pretrazi </button> <br><br>
+          <h2>Rezultati pretrage:</h2>
+          <table  class="table" *ngIf="restoraniP.length>0; else nemaRestorana">
+            <tr>
+              <th>Naziv</th>
+              <th>Adresa</th>
+              <th>Tip</th>
+            </tr>
+            <tr *ngFor='let r of restoraniP'>
+              <td>{{r.naziv}}</td>
+              <td>{{r.adresa}}</td>
+              <td>{{r.tip}}</td>
+            </tr>
+          </table>
+          <br>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+<ng-template #nemaRestorana>
+  Nema restorana koji odgovaraju pretrazi.
+</ng-template>
